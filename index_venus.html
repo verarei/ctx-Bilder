@@ -61,21 +61,22 @@
   let x3 = 0
   let y3 = 0
   let a = 0
+  let sin = Math.sin
   function draw() {
     const nw = img2.naturalWidth
     const nh = img2.naturalHeight
-    const x = Math.sin(a*2.5) * r
-    const y = Math.sin(a) * r
+    const x = sin(a*2.5) * r
+    const y = sin(a) * r
     a += 0.001
-    const x1 = Math.sin(a) * r
-    const y1 = Math.sin(a*3.5) * r
+    const x1 = sin(a) * r
+    const y1 = sin(a*3.5) * r
     a += 0.0005
-    const x2 = Math.sin(a*3.5) * r
-    const y2 = Math.sin(a) * r
+    const x2 = sin(a*3.5) * r
+    const y2 = sin(a) * r
     a += 0.001
     ctx1.clearRect(0,0,100,100)
-    const x3 = Math.sin(a) * r
-    const y3 = Math.sin(a*2.5) * r
+    const x3 = sin(a) * r
+    const y3 = sin(a*2.5) * r
     a += 0.0005
     ctx1.clearRect(0,0,100,100)
     ctx1.drawImage(img2,320,20,150,150, x+300, y+300, 100, 100)
