@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel = "shortcut icon" href = "#">
+
+    <title>requestAnimationFrame</title>
+    <style>
+      body { margin: 0;}
+      img { width: 800 px
+      ;}
+      </style>
+  </head>
+
+  <body>
+    <!-- <h1>Bilder laden mit Javascript</h1> -->
+
+<canvas id="cnv-1" width="800" height="800"></canvas>
+<canvas id="cnv-2" width="200" height="200"></canvas>
+<canvas id="cnv-3" width="200" height="200"></canvas>
+<br>
+<br>
+
+<img id="img-2" src="bilder/img-2.jpg" width="800px">
+<!-- <img id="img-3" src="bilder/img-2.jpg">
+<img id="img-1" src="bilder/img-2.jpg"> -->
+
+
+<script>
+  const img2 = document.getElementById('img-2')
+  const cnv1 = document.getElementById('cnv-1')
+  const ctx1 = cnv1.getContext('2d')
+  cnv1.style.background = 'BlueViolet'
+  img2.addEventListener('load', () => {
+  draw()
+  })
+
+  const img3 = document.getElementById('img-2')
+  const cnv2 = document.getElementById('cnv-2')
+  const ctx2 = cnv2.getContext('2d')
+  // cnv2.style.background = 'deeppink'
+  img3.addEventListener('load', () => {
+  draw()
+  })
+
+  const img1 = document.getElementById('img-2')
+  const cnv3 = document.getElementById('cnv-3')
+  const ctx3 = cnv3.getContext('2d')
+  // cnv3.style.background = 'deeppink'
+  img1.addEventListener('load', () => {
+  draw()
+  })
+
+  const r = 210
+  let x = 0
+  let y = 0
+  let x1 = 0
+  let y1 = 0
+  let x2 = 0
+  let y2 = 0
+  let x3 = 0
+  let y3 = 0
+  let a = 0
+  function draw() {
+    const nw = img2.naturalWidth
+    const nh = img2.naturalHeight
+    const x = Math.sin(a*2.5) * r
+    const y = Math.sin(a) * r
+    a += 0.001
+    const x1 = Math.sin(a) * r
+    const y1 = Math.sin(a*3.5) * r
+    a += 0.0005
+    const x2 = Math.sin(a*3.5) * r
+    const y2 = Math.sin(a) * r
+    a += 0.001
+    ctx1.clearRect(0,0,100,100)
+    const x3 = Math.sin(a) * r
+    const y3 = Math.sin(a*2.5) * r
+    a += 0.0005
+    ctx1.clearRect(0,0,100,100)
+    ctx1.drawImage(img2,320,20,150,150, x+300, y+300, 100, 100)
+    ctx1.drawImage(img2,550,280,150,150, x1+400, y1+400, 100, 100)
+    ctx1.drawImage(img2,200,100,150,150, x2+300, y2+400, 100, 100)
+    ctx1.drawImage(img2,580,20,150,150, x3+400, y3+300, 100, 100)
+    // x+= 0.1
+    // y+= 0.1
+    // x += (Math.random()-.5)*1
+    // y += (Math.random()-.5)*1
+    window.requestAnimationFrame(draw)
+  }
+
+</script>
+</body>
+</html>
